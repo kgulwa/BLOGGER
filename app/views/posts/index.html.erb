@@ -1,25 +1,16 @@
 <h1>All Posts</h1>
 
-<% if user_signed_in? %>
-  <%= link_to "Create New Post", new_post_path, class: "button" %>
-<% else %>
-  <p>You need to <%= link_to "login", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %> to create a post.</p>
-<% end %>
-
-<% @posts.each do |post| %>
-  <div class="post">
-    <h2><%= link_to post.title, post_path(post) %></h2>
-    <p><%= truncate(post.body, length: 200) %></p>
-    <p>Author: <%= post.user.email %></p>
-
-    <% if user_signed_in? && post.user == current_user %>
-      <%= link_to "Edit", edit_post_path(post), class: "button" %> |
-      <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
+<% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <h2><%= link_to post.title, post_path(post) %></h2>
+        <p>by <%= post.user.email %></p>
+        <p><%= truncate(post.body, length: 100) %></p>
+      </li>
     <% end %>
-  </div>
-  <hr>
+  </ul>
+<% else %>
+  <p>No posts yet. <%= link_to "Create one", new_post_path %></p>
 <% end %>
 
-<% if @posts.empty? %>
-  <p>No posts yet. Be the first to create one!</p>
-<% end %>
