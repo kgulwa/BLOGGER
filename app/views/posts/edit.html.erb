@@ -1,0 +1,31 @@
+<h1>Edit Post</h1>
+
+<%= form_with model: @post, local: true do |form| %>
+  <% if @post.errors.any? %>
+    <div>
+      <h2>Oops, something went wrong:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :body, "Content" %><br>
+    <%= form.text_area :body, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit "Update Post" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to All Posts", posts_path %>
+
