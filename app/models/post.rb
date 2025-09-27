@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :u
+  belongs_to :user
   
   #ensures that the user posts have required fields
   validates :title, presence: true
