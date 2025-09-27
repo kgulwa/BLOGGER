@@ -1,0 +1,10 @@
+
+
+if ! command -v foreman &> /dev/null
+then
+  echo "Foreman is not installed. Install it with: gem install foreman"
+  exit 1
+
+fi
+
+foreman start -f Procfile.dev "$@
