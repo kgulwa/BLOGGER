@@ -11,6 +11,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!-- Flash messages -->
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <!-- Header with Login/Logout links -->
+    <header data-turbo-permanent>
+      <% if user_signed_in? %>
+        <!-- Logout button uses a form, works reliably with Turbo -->
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout-button" %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path %> |
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </header>
+
+    <!-- Main content -->
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
