@@ -1,45 +1,47 @@
 class PostsController < ApplicationController
+  # Require user to be signed in for creating, editing, updating, deleting
+  before_action :authenticate_user!, except: [:index, :show]
 
-  before_action : authenticate_user!, except: [:index, :show] #requires user to be signed in 
+  # Load post from database for show, edit, update, destroy
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  before_action set_post, only: [:show, :edit, :update, :destroy] #load post from the database
+  # Ensure only the user who created the post can edit/update/destroy
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
-  before_action :authorize_user! only: [:edit, :update, :destroy] #ensured only the user that created the post can edit it
-
-  def index 
-    @posts = Post.all #lists all posts
+  def index
+    @posts = Post.all
   end
 
-  def show #shows a single post
-  end 
+  def show
+  end
 
   def new
-    @post = current_user.posts.build #associated post with signed_in user
-  end 
+    @post = current_user.posts.build
+  end
 
   def create
-    @post = current_user.post.build(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_tp @post, notice: "POST WAS SUCCESSFULLY CREATED"
-    else 
+      redirect_to @post, notice: "Post was successfully created."
+    else
       render :new
     end
-  end 
+  end
 
   def edit
   end
 
-  def update #updates the post
+  def update
     if @post.update(post_params)
-      redirect_tp @post, notice: "POST WAS SUCCESSFULLY UPDATED"
+      redirect_to @post, notice: "Post was successfully updated."
     else
       render :edit
     end
   end
 
-  def destroy #deletes the post
+  def destroy
     @post.destroy
-    redirect_to_posts_patj, notice: "POST WAS SUCCESSFULLY DELETED"
+    redirect_to posts_path, notice: "Post was successfully deleted."
   end
 
   private
@@ -49,11 +51,11 @@ class PostsController < ApplicationController
   end
 
   def authorize_user!
-    redirect_to_posts_path, alert: "NOT AUTHORIZED" unnless @post>user == current_user #checks if the currebt user is the owner of the post
+    redirect_to posts_path, alert: "You are not authorized." unless @post.user == current_user
   end
 
   def post_params
     params.require(:post).permit(:title, :body)
   end
-end 
-    
+end
+
