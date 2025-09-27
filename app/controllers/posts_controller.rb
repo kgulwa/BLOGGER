@@ -9,14 +9,14 @@ class PostsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all  # shows all posts to everyone
+    @posts = Post.all  # Shows all posts to everyone
   end
 
   def show
   end
 
   def new
-    @post = current_user.posts.build  # link new post to signed-in user
+    @post = current_user.posts.build  # Link new post to signed-in user
   end
 
   def create
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def authorize_user!
-    # Only allow the author to edit &update or destroy
+    # Only allow the author to edit & update or destroy
     redirect_to posts_path, alert: "Not authorized" unless @post.user == current_user
   end
 
@@ -59,6 +59,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 end
-
 
 
