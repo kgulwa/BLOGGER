@@ -1,5 +1,9 @@
 <h1>All Posts</h1>
 
+<% if user_signed_in? %>
+  <%= link_to "Create New Post", new_post_path, class: "button" %>
+<% end %>
+
 <% if @posts.any? %>
   <ul>
     <% @posts.each do |post| %>
@@ -7,10 +11,16 @@
         <h2><%= link_to post.title, post_path(post) %></h2>
         <p>by <%= post.user.email %></p>
         <p><%= truncate(post.body, length: 100) %></p>
+
+        <% if user_signed_in? && post.user == current_user %>
+          <%= link_to "Edit", edit_post_path(post), class: "button" %> |
+          <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "button" %>
+        <% end %>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>No posts yet. <%= link_to "Create one", new_post_path %></p>
+  <p>No posts yet.</p>
 <% end %>
+
 

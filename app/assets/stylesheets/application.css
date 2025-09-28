@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-color: #ffe6f0; /* light pink */
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #cc0066; /* darker pink */
+}
+
+a {
+  color: #ff3399; /* pink links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button, input[type="submit"] {
+  background-color: #ff66b2;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #e60073;
+}
+
