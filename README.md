@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BLOOGER is a simple blog application built with Ruby on Rails. It's users can sign up, log in, create post, edit and delete the.
+Everyone can see the posts even if they are not users of the application.
 
-Things you may want to cover:
+FEATURES:
 
-* Ruby version
+1. User authentication
+2. Loggen in users are able to:
+     Create posts
+     Edit the posts
+     Delete posts (Only their own posts)
+3. Posts contain:
+     Title
+     Content
+     Author
+4. All posts are visible to everyone
 
-* System dependencies
+REQUIREMENTS:
+1. Ruby 3.2.3
+2. Rails 7x
+3. SQLite
 
-* Configuration
+SETUP INSTRUCTIONS:
+1. Clone repository:
+git clone https://github.com/kgulwa/BLOGGER.git
+cd BLOGGER
 
-* Database creation
+2. Install dependencies:
+bundle install
 
-* Database initialization
+3. Setup the database:
+bin/rails db:create db:migrate
 
-* How to run the test suite
+4. Start server:
+bin/rails server
 
-* Services (job queues, cache servers, search engines, etc.)
+5. Open your browser and go to:
+https://localhost:3000
 
-* Deployment instructions
+USAGE:
 
-* ...
+1. Sign up as a new user.
+2. Create your very ever post.
+3. Browse all posts on your homepage.
+4. Edit and delete if need be.
+5. Logout
+           
