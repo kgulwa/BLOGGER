@@ -21,6 +21,7 @@ REQUIREMENTS:
 1. Ruby 3.2.3
 2. Rails 7x
 3. SQLite
+4. TailwindCSS
 
 SETUP INSTRUCTIONS:
 1. Clone repository:
@@ -34,7 +35,7 @@ bundle install
 bin/rails db:create db:migrate
 
 4. Start server:
-bin/rails server
+bin/dev
 
 5. Open your browser and go to:
 https://localhost:3000
