@@ -32,18 +32,19 @@ cd BLOGGER
 bundle install
 
 3. Setup the database:
-bin/rails db:create db:migrate
+bin/rails db:create
+bin/rails db:migrate
 
-4. Start server:
+5. Start server:
 bin/dev
 
-5. Open your browser and go to:
+6. Open your browser and go to:
 https://localhost:3000
 
 USAGE:
 
 1. Sign up as a new user.
-2. Create your very ever post.
+2. Create your first ever post.
 3. Browse all posts on your homepage.
 4. Edit and delete if need be.
 5. Logout
