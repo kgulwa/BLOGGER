@@ -1,6 +1,7 @@
 # README
 
-BLOOGER is a simple blog application built with Ruby on Rails. It's users can sign up, log in, create post, edit and delete the.
+BLOOGER      
+Is a simple blog application built with Ruby on Rails. It's users can sign up, log in, create post, edit and delete the.
 Everyone can see the posts even if they are not users of the application.
 
 FEATURES:
@@ -45,4 +46,10 @@ USAGE:
 3. Browse all posts on your homepage.
 4. Edit and delete if need be.
 5. Logout
+
+FUTURE IMPROVEMENTS:
+
+1. Option to comment on each other's posts
+2. Option to mention or tag other Blogger users
+3. User profiles
            
